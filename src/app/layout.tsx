@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang='en' suppressHydrationWarning>
-			<body className={`${notoSans.variable}  antialiased`}>
+			<body className={`${notoSans.variable} bg-gradient antialiased`}>
 				<ThemeProvider
 					attribute='class'
 					defaultTheme='system'
