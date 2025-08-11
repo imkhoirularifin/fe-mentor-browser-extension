@@ -1,24 +1,46 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
+@custom-variant dark (&:is(.dark *));
+
+/* Primitive */
 :root {
-  /* Base color palette */
-  --colors-neutral-0: #fbfdfe;
-  --colors-neutral-100: #eeeeee;
-  --colors-neutral-200: #d6e2f5;
-  --colors-neutral-300: #c6c6c6;
-  --colors-neutral-600: #535868;
-  --colors-neutral-700: #2f364b;
-  --colors-neutral-800: #202535;
-  --colors-neutral-900: #091540;
-  --colors-red-400: #f25c54;
-  --colors-red-500: #de4840;
-  --colors-red-700: #c7231a;
+  --gradient-light: linear-gradient(180deg, #ebf2fc 0%, #eefbf9 100%);
+  --gradient-dark: linear-gradient(180deg, #04091b 0%, #091540 100%);
 
-  /* Spacing tokens */
+  --font-noto-sans: "Noto Sans", sans-serif;
+  --font-geologica: "Geologica", sans-serif;
+}
+
+/* Light */
+:root {
+  --color-foreground: #091540;
+}
+
+/* Dark */
+.dark {
+  --color-foreground: #fbfdfe;
+}
+
+/* Note: This should be semantic variables, but our figma file is not updated yet */
+/* Semantic */
+@theme inline {
+  --font-noto-sans: var(--font-noto-sans);
+  --font-geologica: var(--font-geologica);
+
+  --color-foreground: var(--color-foreground);
+  --color-neutral-0: #fbfdfe;
+  --color-neutral-100: #eeeeee;
+  --color-neutral-200: #d6e2f5;
+  --color-neutral-300: #c6c6c6;
+  --color-neutral-600: #535868;
+  --color-neutral-700: #2f364b;
+  --color-neutral-800: #202535;
+  --color-neutral-900: #091540;
+  --color-red-400: #f25c54;
+  --color-red-500: #de4840;
+  --color-red-700: #c7231a;
+
   --spacing-0: 0rem;
-  --spacing-025: 0.125rem;
-  --spacing-050: 0.25rem;
-  --spacing-075: 0.375rem;
   --spacing-100: 0.5rem;
   --spacing-125: 0.625rem;
   --spacing-150: 0.75rem;
@@ -30,46 +52,57 @@
   --spacing-600: 3rem;
   --spacing-800: 4rem;
   --spacing-1000: 5rem;
+  --spacing-025: 0.125rem;
+  --spacing-050: 0.25rem;
+  --spacing-075: 0.375rem;
 
-  /* Border radius tokens */
-  --corner-radius-0: 0rem;
-  --corner-radius-4: 0.25rem;
-  --corner-radius-6: 0.375rem;
-  --corner-radius-8: 0.5rem;
-  --corner-radius-10: 0.625rem;
-  --corner-radius-12: 0.75rem;
-  --corner-radius-16: 1rem;
-  --corner-radius-20: 1.25rem;
-  --corner-radius-24: 1.5rem;
-  --corner-radius-full: 62.4375rem;
-
-  /* Gradients */
-  --light-gradient: linear-gradient(180deg, #ebf2fc 0%, #eefbf9 100%);
-  --dark-gradient: linear-gradient(180deg, #04091b 0%, #091540 100%);
+  --radius-0: 0rem;
+  --radius-4: 0.25rem;
+  --radius-6: 0.375rem;
+  --radius-8: 0.5rem;
+  --radius-10: 0.625rem;
+  --radius-12: 0.75rem;
+  --radius-16: 1rem;
+  --radius-20: 1.25rem;
+  --radius-24: 1.5rem;
+  --radius-full: 62.4375rem;
 }
 
-/* Light mode semantic tokens (default) */
-:root {
-  --color-primary: var(--colors-neutral-900);
-  --color-secondary: var(--colors-neutral-600);
-  --color-background: var(--colors-neutral-0);
-  --color-background-alt: var(--colors-neutral-100);
-  --color-border: var(--colors-neutral-200);
-  --color-text-primary: var(--colors-neutral-900);
-  --color-text-secondary: var(--colors-neutral-600);
-  --color-accent-red: var(--colors-red-400);
-  --color-accent-red-hover: var(--colors-red-500);
+body {
+  color: var(--color-foreground);
+  font-family: var(--font-noto-sans);
 }
 
-/* Dark mode semantic tokens */
-:root[class~='dark'] {
-  --color-primary: var(--colors-neutral-0);
-  --color-secondary: var(--colors-neutral-300);
-  --color-background: var(--colors-neutral-900);
-  --color-background-alt: var(--colors-neutral-800);
-  --color-border: var(--colors-neutral-700);
-  --color-text-primary: var(--colors-neutral-0);
-  --color-text-secondary: var(--colors-neutral-300);
-  --color-accent-red: var(--colors-red-500);
-  --color-accent-red-hover: var(--colors-red-700);
+.bg-gradient {
+  background-image: var(--gradient-light);
+  @variant dark {
+    background-image: var(--gradient-dark);
+  }
+}
+
+@utility text-preset-1 {
+  font-family: var(--font-noto-sans);
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%; /* 34px */
+  letter-spacing: -1px;
+}
+
+@utility text-preset-2 {
+  font-family: var(--font-noto-sans);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%; /* 24px */
+  letter-spacing: -0.2px;
+}
+
+@utility text-preset-5 {
+  font-family: var(--font-noto-sans);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%; /* 22.4px */
+  letter-spacing: -0.5px;
 }

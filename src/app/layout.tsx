@@ -1,21 +1,41 @@
-import type { Metadata } from 'next';
-import './globals.css';
-import { ThemeProvider } from '@/components/theme-provider';
+import type { Metadata } from "next";
+import { Noto_Sans, Geologica } from "next/font/google";
+import "./globals.css";
+import { ThemeProvider } from "next-themes";
+
+const notoSans = Noto_Sans({
+  variable: "--font-noto-sans",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
+const geologica = Geologica({
+  variable: "--font-geologica",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
 
 export const metadata: Metadata = {
-  title: 'Browser Extension Manager',
-  description: 'A modern browser extension manager interface'
+  title: "Frontend Mentor | Browser Extension",
+  description: "Frontend Mentor Browser Extension Challenge",
 };
 
 export default function RootLayout({
-  children
+  children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body>
-        <ThemeProvider>{children}</ThemeProvider>
+      <body className={`${notoSans.variable} bg-gradient antialiased`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
