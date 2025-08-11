@@ -9,6 +9,7 @@ import { formUrlQuery } from "@/utils/filter";
 import ThemeSwitcher from "@/components/theme-switcher";
 import { Extension } from "@/types/extension";
 import Button from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
 
 function ExtensionsContent() {
   const pathname = usePathname();
@@ -142,9 +143,75 @@ function ExtensionsContent() {
   );
 }
 
+function ExtensionsSkeleton() {
+  return (
+    <main className="min-h-screen">
+      {/* Header Skeleton */}
+      <div className="mx-auto mt-250 px-200 md:px-400 xl:px-800">
+        <header className="bg-neutral-0 rounded-20 mx-auto mt-500 flex max-w-6xl flex-row items-center justify-between border border-neutral-200 px-200 py-150 shadow-sm dark:border-neutral-700 dark:bg-neutral-800 dark:shadow-none">
+          {/* Logo skeleton */}
+          <div className="flex flex-row items-center gap-150">
+            <Skeleton className="h-10 w-10 rounded-lg" />
+            <Skeleton className="h-6 w-24" />
+          </div>
+
+          {/* Theme switcher skeleton */}
+          <Skeleton className="rounded-12 h-11 w-11" />
+        </header>
+      </div>
+
+      {/* Main Content Skeleton */}
+      <div className="mx-auto mt-500 mb-800 flex flex-col items-center px-200 md:px-400 xl:px-800">
+        <div className="flex w-full max-w-6xl flex-col items-center gap-300 md:flex-row md:justify-between">
+          {/* Title skeleton */}
+          <Skeleton className="h-8 w-48" />
+
+          {/* Filter buttons skeleton */}
+          <div className="flex flex-row gap-150">
+            <Skeleton className="h-10 w-12 rounded-lg" />
+            <Skeleton className="h-10 w-16 rounded-lg" />
+            <Skeleton className="h-10 w-20 rounded-lg" />
+          </div>
+        </div>
+
+        {/* Extensions Grid Skeleton */}
+        <div className="mt-400 flex max-w-6xl flex-col gap-150 md:grid md:grid-cols-2 xl:grid-cols-3">
+          {Array.from({ length: 6 }).map((_, index) => (
+            <div
+              key={index}
+              className="rounded-20 bg-neutral-0 flex h-[200px] flex-col justify-between p-250 dark:bg-neutral-800"
+            >
+              {/* Extension card skeleton - matching ExtensionCard layout */}
+              <div className="flex flex-row gap-200">
+                {/* Logo skeleton */}
+                <Skeleton className="h-15 w-15 rounded-lg" />
+
+                {/* Name and description skeleton */}
+                <div className="flex flex-col gap-100">
+                  <Skeleton className="h-6 w-32" />
+                  <div className="space-y-050">
+                    <Skeleton className="h-4 w-40" />
+                    <Skeleton className="h-4 w-28" />
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom actions skeleton */}
+              <div className="flex flex-row items-center justify-between">
+                <Skeleton className="h-8 w-16 rounded-lg" />
+                <Skeleton className="h-6 w-11 rounded-full" />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </main>
+  );
+}
+
 export default function Page() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<ExtensionsSkeleton />}>
       <ExtensionsContent />
     </Suspense>
   );
