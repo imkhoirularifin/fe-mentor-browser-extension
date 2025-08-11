@@ -27,7 +27,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${notoSans.variable} bg-gradient antialiased`}>
+      <body
+        className={`${notoSans.variable} ${geologica.variable} bg-gradient antialiased`}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

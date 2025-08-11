@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import ExtensionCard from "@/components/extension-card";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import data from "./data.json";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { formUrlQuery } from "@/utils/filter";
@@ -10,7 +10,7 @@ import ThemeSwitcher from "@/components/theme-switcher";
 import { Extension } from "@/types/extension";
 import Button from "@/components/ui/button";
 
-export default function Page() {
+function ExtensionsContent() {
   const pathname = usePathname();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -139,5 +139,13 @@ export default function Page() {
         </div>
       </div>
     </main>
+  );
+}
+
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ExtensionsContent />
+    </Suspense>
   );
 }
