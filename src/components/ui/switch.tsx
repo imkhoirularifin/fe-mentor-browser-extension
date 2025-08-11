@@ -2,7 +2,7 @@ import { cn } from "@/utils/class";
 import { cva, VariantProps } from "class-variance-authority";
 
 const switchVariants = cva(
-  "relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-200 ease-in-out hover:cursor-pointer",
+  "relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-200 ease-in-out hover:cursor-pointer shadow-sm dark:shadow-none",
   {
     variants: {
       state: {

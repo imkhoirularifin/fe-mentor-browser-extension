@@ -19,7 +19,7 @@ export default function ExtensionCard({
   const { logo, name, description, isActive } = extension;
 
   return (
-    <div className="rounded-20 bg-neutral-0 flex h-[200px] flex-col justify-between p-250 dark:bg-neutral-800">
+    <div className="rounded-20 bg-neutral-0 flex h-[200px] flex-col justify-between border border-neutral-200 p-250 shadow-sm dark:border-neutral-700 dark:bg-neutral-800 dark:shadow-none">
       {/* top */}
       <div className="flex flex-row gap-200">
         <Image src={logo} alt={name} width={60} height={60} />
