@@ -90,7 +90,7 @@ function ExtensionsContent() {
 
       {/* Main Content */}
       <div className="mx-auto mt-500 mb-800 flex flex-col items-center px-200 md:px-400 xl:px-800">
-        <div className="flex flex-col items-center gap-300">
+        <div className="flex w-full max-w-6xl flex-col items-center gap-300 md:flex-row md:justify-between">
           <h1 className="text-preset-1">Extensions List</h1>
           <div className="flex flex-row gap-150">
             <Button
