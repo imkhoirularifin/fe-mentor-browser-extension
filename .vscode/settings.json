@@ -1,0 +1,4 @@
+{
+  "tailwindCSS.classFunctions": ["cva", "cx", "twMerge"],
+  "css.lint.unknownAtRules": "ignore"
+}
